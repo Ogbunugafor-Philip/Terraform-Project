@@ -19,3 +19,12 @@ module "vpc" {
   az1 = "us-east-1a"
   az2 = "us-east-1b"
 }
+
+module "security" {
+  source           = "./modules/security"
+  vpc_id           = module.vpc.vpc_id
+  my_ip            = "197.210.53.31/32"
+  enable_rds_role  = true
+}
+
+
