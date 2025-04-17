@@ -32,3 +32,12 @@ output "private_db_subnet_az_2_id" {
   description = "ID of Private DB Subnet in AZ 2"
   value       = aws_subnet.private_db_az_2.id
 }
+
+output "private_subnet_ids" {
+  value = [
+    aws_subnet.private_web_az_1.id,
+    aws_subnet.private_web_az_2.id,
+    aws_subnet.private_db_az_1.id,
+    aws_subnet.private_db_az_2.id,
+  ]
+}

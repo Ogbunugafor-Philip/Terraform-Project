@@ -27,4 +27,16 @@ module "security" {
   enable_rds_role  = true
 }
 
+module "compute" {
+  source = "./modules/compute"
+
+  instance_type         = "t2.micro"
+  app_sg_id             = module.security.app_sg_id
+  private_subnet_ids    = module.vpc.private_subnet_ids
+  #target_group_arn      = module.lb.target_group_arn
+  asg_min_size          = 1
+  asg_max_size          = 4
+  asg_desired_capacity  = 1
+}
+
 
