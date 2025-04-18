@@ -57,4 +57,14 @@ module "database" {
   db_password           = "terraform_password"
 }
 
+module "bastion" {
+  source = "./modules/bastion"
+
+  ami_id            = "ami-0fc5d935ebf8bc3bc"
+  instance_type     = "t2.micro"
+  key_name          = "terraform"
+  public_subnet_id  = module.vpc.public_subnet_az_1_id
+  security_group_id = module.security.bastion_sg_id
+}
+
 
