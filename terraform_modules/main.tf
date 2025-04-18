@@ -39,4 +39,12 @@ module "compute" {
   asg_desired_capacity  = 1
 }
 
+module "loadbalancer" {
+  source = "./modules/loadbalancer"
+
+  web_sg_id           = module.security.web_sg_id
+  public_subnet_ids   = module.vpc.public_subnet_ids
+  vpc_id              = module.vpc.vpc_id
+}
+
 
