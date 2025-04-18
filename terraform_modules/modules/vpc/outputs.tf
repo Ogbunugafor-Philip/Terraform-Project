@@ -55,3 +55,11 @@ output "private_db_subnet_ids" {
     aws_subnet.private_db_az_2.id
   ]
 }
+
+output "private_app_subnet_ids" {
+  description = "Private subnets for the application EC2 instances"
+  value       = [
+    aws_subnet.private_web_az_1.id,
+    aws_subnet.private_web_az_2.id
+  ]
+}
