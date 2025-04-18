@@ -47,3 +47,11 @@ output "public_subnet_ids" {
     aws_subnet.public_az_2.id,
   ]
 }
+
+output "private_db_subnet_ids" {
+  description = "List of Private DB Subnet IDs"
+  value = [
+    aws_subnet.private_db_az_1.id,
+    aws_subnet.private_db_az_2.id
+  ]
+}

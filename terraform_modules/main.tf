@@ -47,4 +47,14 @@ module "loadbalancer" {
   vpc_id              = module.vpc.vpc_id
 }
 
+module "database" {
+  source = "./modules/database"
+
+  private_db_subnet_ids = module.vpc.private_db_subnet_ids
+  db_sg_id              = module.security.db_sg_id
+  db_name               = "terraform_db"
+  db_username           = "admin"
+  db_password           = "terraform_password"
+}
+
 
