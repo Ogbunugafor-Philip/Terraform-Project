@@ -208,7 +208,7 @@ In this step, we would do the following;
   - Private DB Subnet 2: 10.0.6.0/24 ([256 IPs]) in us-east-1b
 Note: AWS reserves 5 IPs per subnet, so usable IPs per /24 subnet = 251.
   Why:
-  This setup separates your infrastructure into functional layers while distributing them        across AZs for fault tolerance. Public subnets host internet-facing components. Private web
+  This setup separates your infrastructure into functional layers while distributing them across AZs for fault tolerance. Public subnets host internet-facing components. Private web
   subnets host internal app servers, and private DB subnets securely store your application
   data. Each /24 subnet provides enough IPs for scaling while maintaining clear separation of
   roles.
@@ -255,8 +255,10 @@ You've created separate route tables: one for public subnets (routing 0.0.0.0/0 
 
 Now we need to use terraform to automate the building of this VPC
 
-Implement main.tf for the VPC module. Go to: terraform_modules/modules/vpc/main.tf
-Reference:
+### Implement main.tf for the VPC module. Go to: terraform_modules/modules/vpc/main.tf
+
+Reference: [VPC Terraform Module](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/vpc/main.tf)
+
 
 What the Script does
 VPC & Internet Setup
