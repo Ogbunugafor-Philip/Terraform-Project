@@ -255,12 +255,13 @@ You've created separate route tables: one for public subnets (routing 0.0.0.0/0 
 
 Now we need to use terraform to automate the building of this VPC
 
-### Implement main.tf for the VPC module. Go to: terraform_modules/modules/vpc/main.tf
+Implement main.tf for the VPC module. Go to: terraform_modules/modules/vpc/main.tf
+Copy and Paste the below
 
 Reference: [VPC Terraform Module](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/vpc/main.tf)
 
 
-What the Script does
+### What the Script does
 VPC & Internet Setup
 - aws_vpc: Creates your private network (CIDR 10.0.0.0/16 from variable).
 - aws_internet_gateway: Allows internet access for resources in public subnets.
@@ -286,7 +287,9 @@ Associations
 ![image](https://github.com/user-attachments/assets/78f6960f-f8d3-4076-b27c-f374446c67e8)
 
 Implement variables.tf for the VPC module. Go to: terraform_modules/modules/vpc/variables.tf
-Reference:
+Copy and Paste the below
+Reference: [VPC Module Variables](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/vpc/variables.tf)
+
 
 What the Script does
 This file defines all the input parameters your main.tf module uses. Instead of hardcoding values (like CIDR blocks or subnet AZs), you define variables here so you can:
@@ -297,9 +300,11 @@ This file defines all the input parameters your main.tf module uses. Instead of 
 
 
 Implement outputs.tf for the VPC module. Go to: terraform_modules/modules/vpc/outputs.tf
+Copy and Paste the below
 
-Reference:
-What the Script does
+Reference: [VPC Module Outputs](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/vpc/outputs.tf)
+
+### What the Script does
 
 The outputs.tf file exposes key resource IDs from the module to the root module or other modules, so you can reference them later — for example, when creating EC2 instances, load balancers, RDS databases, or security groups.
 Think of it like a return statement for your module.
@@ -308,8 +313,12 @@ Think of it like a return statement for your module.
 
 We have updated the main.tf, variables.tf and outputs.tf of the VPC module.
 Now, lets update the main.tf of our root. The main.tf in your root folder is where you call your modules. It acts like the controller or main entry point for your entire Terraform project.
+
 Go to the folder and paste the below:
-Reference:
+
+Reference: [Root Main Terraform Configuration](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/main.tf)
+line 1 -22
+
 
 
 Let us test to be sure our configuration is OK
