@@ -372,7 +372,8 @@ Below are infrastructures we would need to automate with terraform
 Update main.tf inside terraform_modules/modules/security
 Copy and paste this into your main.tf
 
-Reference:
+Reference: [Security Module Main](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/security/main.tf)
+
 
 ### What the Script Does
 Creates Four Security Groups:
@@ -393,7 +394,9 @@ Optionally Creates IAM Role for RDS (if enabled):
 
 Update variables.tf inside terraform_modules/modules/security
 Copy and paste this into your variables.tf
-Reference:
+
+Reference: [Security Module Variables](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/security/variables.tf)
+
 
 ### What this Script Does
 vpc_id Variable:
@@ -412,7 +415,11 @@ enable_rds_role Variable:
 
 Update outputs.tf inside terraform_modules/modules/security
 Copy and paste this into your outputs.tf
-Reference:
+
+Reference: [Security Module Outputs](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/security/outputs.tf)
+
+
+
 ![image](https://github.com/user-attachments/assets/38a3ea9e-800d-4207-b23e-ec0dce9d2ec1)
 
 ###What the Script Does
@@ -420,7 +427,10 @@ It exposes key information from your security groups and IAM roles so other modu
 
 Update Root main.tf (in your project root folder)
 Go to your root main.tf and add this block after your VPC module
-Reference:
+
+Reference: [Root Main Terraform Configuration](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/main.tf)
+
+line 23 - 29
 
 
 To test our configuration, these two commands
@@ -459,7 +469,9 @@ Set Up Auto Scaling Group (ASG):
 
 Update main.tf inside terraform_modules/modules/compute
 Copy and paste this into your main.tf
-Reference:
+
+Reference: [Compute Module Main](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/compute/main.tf)
+
 
 
 What the Script Does
@@ -488,7 +500,9 @@ What the Script Does
 
 Update variables.tf inside terraform_modules/modules/compute
 Copy and paste this into your variables.tf
-Reference:
+
+Reference: [Compute Module Variables](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/compute/variables.tf)
+
 
 ### What the Script Does
 - Defines the EC2 instance type (t2.micro by default).
@@ -503,7 +517,9 @@ Reference:
 
 Update outputs.tf inside terraform_modules/modules/compute
 Copy and paste this into your outputs.tf
-Reference:
+
+Reference: [Compute Module Outputs](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/compute/outputs.tf)
+
 
 ### What the Script Does
 - Exposes the Launch Template ID for use in other modules or root outputs.
@@ -513,7 +529,10 @@ Reference:
 
 Update Root main.tf (in your project root folder)
 Go to your root main.tf and add this block after your security module
-Reference:
+
+Reference: [Root Main Terraform Configuration](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/main.tf)
+
+line 30 -41
 
 To test our configuration, these two commands
 ```bash
@@ -545,7 +564,9 @@ Output
 
 Update main.tf inside terraform_modules/modules/loadbalancer
 Copy and paste this into your main.tf
-Reference:
+
+Reference:[Load Balancer Module Main](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/loadbalancer/main.tf)
+
 
 ### What this Script Does
 Creates an Application Load Balancer (aws_lb.app_alb)
@@ -569,7 +590,9 @@ Creates an HTTP Listener on Port 80 (aws_lb_listener.http)
 
 Update variables.tf inside terraform_modules/modules/loadbalancer
 Copy and paste this into your variables.tf
-Reference:
+
+Reference: [Load Balancer Module Variables](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/loadbalancer/variables.tf)
+
 
 ### What the Script Does
 web_sg_id
@@ -579,9 +602,11 @@ web_sg_id
 public_subnet_ids: Accepts a list of public subnet IDs where the ALB will be deployed
 - vpc_id: Provides the VPC ID for placing the target group
 
-Update variables.tf inside terraform_modules/modules/loadbalancer
-Copy and paste this into your variables.tf
-Reference:
+Update outputs.tf inside terraform_modules/modules/loadbalancer
+Copy and paste this into your outputs.tf
+
+Reference: [Load Balancer Module Outputs](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/loadbalancer/outputs.tf)
+
 
 ### What the Script Does
 alb_dns_name
@@ -596,7 +621,9 @@ target_group_arn
 
 Update Root main.tf (in your project root folder)
 Go to your root main.tf and add this block after your security module
-Reference:
+
+Reference: [Root Main Terraform Configuration](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/main.tf)
+line 42 -49
 
 ### What the Script Does
 - Calls the loadbalancer module from your module’s directory
@@ -628,7 +655,9 @@ In this step, we would do the following:
 
 Update main.tf inside terraform_modules/modules/database
 Copy and paste this into your main.tf
-Reference:
+
+Reference: [Database Module Main](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/database/main.tf)
+
 
 ### What This Script Does:
 - Creates an RDS Subnet Group using the private DB subnets
@@ -644,7 +673,9 @@ Reference:
 
 Update variables.tf inside terraform_modules/modules/database
 Copy and paste this into your variables.tf
-Reference:
+
+Reference: [Database Module Variables](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/database/variables.tf)
+
 
 ### What This Script Does:
 - Defines required inputs for subnet placement, DB access control, and login credentials
@@ -652,7 +683,9 @@ Reference:
 
 Update outputs.tf inside terraform_modules/modules/database
 Copy and paste this into your outputs.tf
-Reference:
+
+Reference: [Database Module Outputs](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/database/outputs.tf)
+
 
 ### What This Script Does:
 - Outputs the DNS endpoint of the RDS instance
@@ -660,7 +693,11 @@ Reference:
 
 Update Root main.tf (in your project root folder)
 Go to your root main.tf and add this block after your security module
-Reference:
+
+Reference: [Root Main Terraform Configuration](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/main.tf)
+line 50 -59
+
+
 To test our configuration, these two commands
 ```bash
 terraform init
@@ -688,7 +725,9 @@ Create Bastion EC2 Resource
 
 Update main.tf inside terraform_modules/modules/bastion
 Copy and paste this into your main.tf
-Reference:
+
+Reference: [Bastion Module Main](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/bastion/main.tf)
+
 
 ### What the Script Does
 This script provisions a Bastion EC2 instance using the specified:
@@ -702,7 +741,9 @@ It tags the instance as "Bastion Host", and is used as a secure jump box to SSH 
 
 Update variables.tf inside terraform_modules/modules/bastion
 Copy and paste this into your variables.tf
-Reference:
+
+Reference: [Bastion Module Variables](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/bastion/variables.tf)
+
 
 ### What the Script Does
 This variables.tf file defines all the input variables required to provision the Bastion Host, including:
@@ -715,7 +756,9 @@ This variables.tf file defines all the input variables required to provision the
 
 Update outputs.tf inside terraform_modules/modules/bastion
 Copy and paste this into your outputs.tf
-Reference:
+
+Reference: [Bastion Module Outputs](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/modules/bastion/outputs.tf)
+
 
 ### What the Script Does
 This outputs.tf file exposes useful information after the Bastion instance is created:
@@ -724,7 +767,9 @@ This outputs.tf file exposes useful information after the Bastion instance is cr
 
 Update Root main.tf (in your project root folder)
 Go to your root main.tf and add this block after your security module
-Reference:
+
+Reference: [Root Main Terraform Configuration](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/main.tf)
+line 60 - 68
 
 ### What the Script Does
 This block calls the Bastion Host module and passes required values:
@@ -744,8 +789,10 @@ Below are what we would be doing in this step
     - Verifying resources exist and are configured correctly in AWS Console.
 
 Update Root outputs.tf (in your project root folder)
-Go to your root outputs.tf and add this block after your security module
-Reference:
+Go to your root outputs.tf and add this block 
+
+Reference: [Root Outputs](https://github.com/Ogbunugafor-Philip/Terraform-Project/blob/main/terraform_modules/outputs.tf)
+
 
 
 ### What the outputs.tf Script Does
